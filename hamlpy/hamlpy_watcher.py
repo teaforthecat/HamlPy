@@ -45,7 +45,7 @@ def _watch_folder(folder):
     """Compares "modified" timestamps against the "compiled" dict, calls compiler
     if necessary."""
     for dirpath, dirnames, filenames in os.walk(folder):
-        filenames = filter(lambda f: f.startswith(".#"),filenames)
+        filenames = filter(lambda f: not f.startswith(".#"),filenames)
         filepaths = (os.path.join(dirpath, filename) \
                      for filename in filenames \
                      if watched_extension(filename)
